@@ -64,7 +64,6 @@ const create_data = async (params) => {
   const response = await new Promise((resolve, reject) => {
     let checkExistRecord = `SELECT ${select} FROM ${database}.${tableName} ${where}`;
     connection.query(checkExistRecord, (err, row) => {
-      console.log(row)
       if (err) reject(new Error(`${err.toString()}, Error No : ${err.errno}`));
       if (row.length === 0) {
         let query = `INSERT INTO ${database}.${tableName} ${insert_column_name} VALUES ${insert_column_value}`;

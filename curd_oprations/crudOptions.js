@@ -24,7 +24,7 @@ const find_all = async (params) => {
   return response;
 };
 
-const find_one = async (params) => {
+const find_one = async (params, token) => {
   const { database = "", select = "*", tableName, where = "" } = params;
 
   const response = await new Promise((resolve, reject) => {
@@ -44,6 +44,7 @@ const find_one = async (params) => {
           status: 1,
           message: "User found.",
           data: row,
+          token: token
         });
       }
     });
